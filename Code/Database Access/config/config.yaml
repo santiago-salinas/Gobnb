@@ -1,0 +1,17 @@
+mongo_datasource: "mongodb://localhost:27017"
+redis_address: "localhost:6379"
+rabbit_address: "amqp://guest:guest@localhost:5672/"
+
+client_secret: "c42d202b0ecf8a3b0795d89a58c6269826e94079"
+client_id: "Ov23lih2awm8lbNw28CA"
+token_verification_url: "https://api.github.com/applications/Ov23lih2awm8lbNw28CA/token"
+
+default_refund_percentage: 100
+default_cancellation_days: 7
+
+property_images_path: "public/images"
+property_images_dir: "http://localhost:8090/images/"
+property_images_compression_scale: "scale=100:100"
+
+payment_url : "http://localhost:8085"
+refund_url: "http://localhost:8085/refund"

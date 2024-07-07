@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: "rabbitmq"
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  redis:
+    image: redis:alpine
+    container_name: "redis"
+    ports:
+      - 6379:6379
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:v2.45.3
+    container_name: prometheus
+    network_mode: metrics
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+
+  grafana:
+    image: grafana/grafana:10.2.4
+    container_name: grafana
+    network_mode: metrics
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+networks:
+  rabbitmq_go_net:
+    driver: bridge
